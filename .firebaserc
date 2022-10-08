@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "wallet-setup": {
+      "hosting": {
+        "app": [
+          "wallet-setup"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "wallet-setup"
+  }
+}
