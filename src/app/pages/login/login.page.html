@@ -1,0 +1,36 @@
+<ion-content>
+  <ion-grid class="h-full">
+    <ion-row class="h-full ion-justify-content-center">
+      <ion-col
+        size="auto"
+        class="ion-align-self-center border border-dark border-solid rounded-lg"
+      >
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+          <ion-list mode="md">
+            <ion-item>
+              <ion-icon name="mail-outline" slot="start"></ion-icon>
+              <ion-label position="stacked" color="dark"
+                >Email Address</ion-label
+              >
+              <ion-input
+                type="email"
+                formControlName="email"
+                autocomplete="email"
+              >
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+              <ion-label position="stacked" color="dark">Password</ion-label>
+              <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
+          </ion-list>
+          <ion-button type="submit" expand="block" class="ion-margin"
+            >LOGIN
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
