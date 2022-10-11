@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +12,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AngularFireAuth,
+    private navCtrl: NavController
+  ) {
     this.loginForm = this.formBuilder.group({
       email: [
         '',
@@ -32,11 +39,22 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit() {
+  async onSubmit() {
     this.loginForm.markAllAsTouched();
 
     if (this.loginForm.invalid) {
       return;
     }
+
+    const { email, password } = this.loginForm.getRawValue();
+
+    await this.auth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
