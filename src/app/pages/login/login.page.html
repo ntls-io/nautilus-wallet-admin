@@ -26,8 +26,14 @@
               <ion-input type="password" formControlName="password"></ion-input>
             </ion-item>
           </ion-list>
-          <ion-button type="submit" expand="block" class="ion-margin"
-            >LOGIN
+          <ion-button
+            type="submit"
+            expand="block"
+            class="ion-margin"
+            [disabled]="isBusy"
+          >
+            <ion-spinner name="dots" *ngIf="isBusy"></ion-spinner>
+            <span *ngIf="!isBusy">LOGIN</span>
           </ion-button>
         </form>
       </ion-col>

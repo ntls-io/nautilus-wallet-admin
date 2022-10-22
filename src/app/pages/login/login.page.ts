@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
-import { NavController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +11,13 @@ import { NavController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
+  isBusy: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private auth: AngularFireAuth,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private loadingCtrl: LoadingController
   ) {
     this.loginForm = this.formBuilder.group({
       email: [
@@ -46,15 +48,22 @@ export class LoginPage implements OnInit {
       return;
     }
 
+    this.isBusy = true;
+
     const { email, password } = this.loginForm.getRawValue();
 
     await this.auth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log(result);
+        if (result?.user) {
+          this.navCtrl.navigateRoot('home');
+        }
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        this.isBusy = false;
       });
   }
 }

@@ -10,7 +10,7 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage {
   constructor(
-    private auth: AngularFireAuth,
+    public auth: AngularFireAuth,
     private navCtrl: NavController,
     private firestore: Firestore
   ) {}
