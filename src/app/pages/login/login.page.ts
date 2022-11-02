@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
-import { LoadingController, NavController } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +15,7 @@ export class LoginPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private auth: AngularFireAuth,
-    private navCtrl: NavController,
-    private loadingCtrl: LoadingController
+    private navCtrl: NavController
   ) {
     this.loginForm = this.formBuilder.group({
       email: [
