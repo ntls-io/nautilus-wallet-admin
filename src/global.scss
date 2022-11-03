@@ -25,21 +25,20 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-ion-input {
-  --border-radius: 9999px;
-  --padding-start: 8px !important;
-  border-color: var(--ion-color-medium) !important;
-  @apply bg-transparent
-    rounded border-2 border-solid #{!important};
-  &.invalid {
-    border: 2px solid var(--ion-color-danger) !important;
-  }
-}
-
 ion-item-group {
   ion-item {
     padding-bottom: 8px;
     --inner-padding-end: 0;
+
+    ion-input {
+      --border-radius: 9999px;
+      --padding-start: 8px !important;
+      border-color: var(--ion-color-medium) !important;
+      @apply bg-transparent rounded border-2 border-solid #{!important};
+      &.invalid {
+        border: 2px solid var(--ion-color-danger) !important;
+      }
+    }
   }
 
   ion-item::part(inner) {
