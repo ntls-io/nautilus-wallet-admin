@@ -58,10 +58,10 @@
               <ion-label position="stacked">Token issuer</ion-label>
               <ion-input
                 placeholder="Enter issue"
-                [(ngModel)]="organisation.issuer"
+                [(ngModel)]="organisation.tokenIssuer"
               ></ion-input>
               <ion-buttons slot="end" class="self-end">
-                <ion-button (click)="saveIssuer(organisation.issuer)">
+                <ion-button (click)="saveIssuer(organisation.tokenIssuer)">
                   <ion-icon name="save" slot="icon-only"></ion-icon>
                 </ion-button>
               </ion-buttons>
