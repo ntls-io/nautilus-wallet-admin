@@ -28,6 +28,7 @@ export class HomePage implements OnInit {
   organisation: Organisation = {
     name: '',
     tokenIssuer: '',
+    trustLineIssuer: '',
     ledger: '',
     code: '',
   };
@@ -63,8 +64,13 @@ export class HomePage implements OnInit {
     });
   }
 
-  async saveIssuer(tokenIssuer: string) {
+  async saveTokenIssuer(tokenIssuer: string) {
     await this.orgDoc.update({ tokenIssuer });
+    this.notify();
+  }
+
+  async saveTrustLineIssuer(trustLineIssuer: string) {
+    await this.orgDoc.update({ trustLineIssuer });
     this.notify();
   }
 
@@ -92,6 +98,7 @@ export class HomePage implements OnInit {
 interface Organisation {
   name: string;
   tokenIssuer: string;
+  trustLineIssuer: string;
   ledger: string;
   code: string;
 }
