@@ -46,10 +46,10 @@
               <ion-label position="stacked">Currency Symbol</ion-label>
               <ion-input
                 placeholder="Enter text"
-                [(ngModel)]="organisation.code"
+                [(ngModel)]="organisation.tokenSymbol"
               ></ion-input>
               <ion-buttons slot="end" class="self-end">
-                <ion-button (click)="saveSymbol(organisation.code)">
+                <ion-button (click)="saveSymbol(organisation.tokenSymbol)">
                   <ion-icon name="save" slot="icon-only"></ion-icon>
                 </ion-button>
               </ion-buttons>
@@ -70,12 +70,10 @@
               <ion-label position="stacked">Trust Line issuer</ion-label>
               <ion-input
                 placeholder="Enter trust line issuer"
-                [(ngModel)]="organisation.trustLineIssuer"
+                [(ngModel)]="organisation.xrpIssuer"
               ></ion-input>
               <ion-buttons slot="end" class="self-end">
-                <ion-button
-                  (click)="saveTrustLineIssuer(organisation.trustLineIssuer)"
-                >
+                <ion-button (click)="saveXrpIssuer(organisation.xrpIssuer)">
                   <ion-icon name="save" slot="icon-only"></ion-icon>
                 </ion-button>
               </ion-buttons>

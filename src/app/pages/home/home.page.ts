@@ -28,9 +28,9 @@ export class HomePage implements OnInit {
   organisation: Organisation = {
     name: '',
     tokenIssuer: '',
-    trustLineIssuer: '',
+    xrpIssuer: '',
     ledger: '',
-    code: '',
+    tokenSymbol: '',
   };
 
   orgDoc: AngularFirestoreDocument;
@@ -69,8 +69,8 @@ export class HomePage implements OnInit {
     this.notify();
   }
 
-  async saveTrustLineIssuer(trustLineIssuer: string) {
-    await this.orgDoc.update({ trustLineIssuer });
+  async saveXrpIssuer(xrpIssuer: string) {
+    await this.orgDoc.update({ xrpIssuer });
     this.notify();
   }
 
@@ -79,8 +79,8 @@ export class HomePage implements OnInit {
     this.notify();
   }
 
-  async saveSymbol(code: string) {
-    await this.orgDoc.update({ code });
+  async saveSymbol(tokenSymbol: string) {
+    await this.orgDoc.update({ tokenSymbol });
     this.notify();
   }
 
@@ -98,7 +98,7 @@ export class HomePage implements OnInit {
 interface Organisation {
   name: string;
   tokenIssuer: string;
-  trustLineIssuer: string;
+  xrpIssuer: string;
   ledger: string;
-  code: string;
+  tokenSymbol: string;
 }
