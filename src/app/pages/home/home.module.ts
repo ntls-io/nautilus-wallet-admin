@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { HomePage } from './home.page';
 
 import { NgxColorsModule } from 'ngx-colors';
+import { ColorsComponent } from 'src/app/components/colors/colors.component';
 import { HomePageRoutingModule } from './home-routing.module';
 
 @NgModule({
@@ -15,6 +16,6 @@ import { HomePageRoutingModule } from './home-routing.module';
     HomePageRoutingModule,
     NgxColorsModule,
   ],
-  declarations: [HomePage],
+  declarations: [HomePage, ColorsComponent],
 })
 export class HomePageModule {}

@@ -13,18 +13,6 @@ import { NavController, ToastController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  colors = [
-    { name: 'primary', value: '' },
-    { name: 'secondary', value: '' },
-    { name: 'tertiary', value: '' },
-    { name: 'success', value: '' },
-    { name: 'warning', value: '' },
-    { name: 'danger', value: '' },
-    { name: 'medium', value: '' },
-    { name: 'light', value: '' },
-    { name: 'dark', value: '' },
-  ];
-
   organisation: Organisation = {
     name: '',
     tokenIssuer: '',

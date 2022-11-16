@@ -23,18 +23,7 @@
           <ion-label>Theme Colors</ion-label>
         </ion-list-header>
 
-        <ion-card class="my-3" *ngFor="let color of colors">
-          <ion-item lines="none" [color]="color.name">
-            <ngx-colors
-              slot="start"
-              ngx-colors-trigger
-              [(ngModel)]="color.value"
-            ></ngx-colors>
-            <ion-label>
-              <h2>{{color.name}}</h2>
-            </ion-label>
-          </ion-item>
-        </ion-card>
+        <app-colors></app-colors>
       </ion-col>
       <ion-col size="auto">
         <ion-list lines="none">

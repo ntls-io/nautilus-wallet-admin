@@ -1,0 +1,12 @@
+<ion-item lines="none" *ngFor="let color of colorScheme | keyvalue">
+  <ngx-colors
+    slot="start"
+    ngx-colors-trigger
+    [(ngModel)]="color.value"
+  ></ngx-colors>
+  <ion-label>
+    <h2>{{ color.key }}</h2>
+  </ion-label>
+</ion-item>
+
+<ion-button expand="block" (click)="saveColors()"> Save </ion-button>

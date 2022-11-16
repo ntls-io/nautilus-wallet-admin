@@ -45,3 +45,12 @@ ion-item-group {
     padding-right: 0px;
   }
 }
+
+.g-input {
+  border: 1px solid black !important;
+  input {
+    background: white !important;
+    font-size: 14px !important;
+    font-weight: 600;
+  }
+}
