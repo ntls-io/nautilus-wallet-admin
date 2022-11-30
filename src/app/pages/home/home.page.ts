@@ -6,7 +6,9 @@ import {
 } from '@angular/fire/compat/firestore';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { NavController, ToastController } from '@ionic/angular';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -50,17 +52,25 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.auth.user.subscribe(({ uid }) => {
-      const users = doc(this.firestore, `users/${uid}`);
-      docData(users).subscribe(({ org }) => {
-        if (org) {
-          this.orgDoc = this.afs.doc(`organisations/${org}`);
-          const orgData = this.orgDoc.valueChanges();
-          orgData.subscribe((data: Organisation) => {
-            this.organisation = data;
+    this.auth.user.pipe(untilDestroyed(this)).subscribe((user) => {
+      const uid = user?.uid;
+      if (uid) {
+        const users = doc(this.firestore, `users/${uid}`);
+        docData(users)
+          .pipe(untilDestroyed(this))
+          .subscribe(({ orgs }) => {
+            console.log(orgs);
+            if (orgs?.length) {
+              this.orgDoc = this.afs.doc(`organisations/${orgs[0]}`);
+              const orgData = this.orgDoc.valueChanges();
+              orgData
+                .pipe(untilDestroyed(this))
+                .subscribe((data: Organisation) => {
+                  this.organisation = data;
+                });
+            }
           });
-        }
-      });
+      }
     });
   }
 
