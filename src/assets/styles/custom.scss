@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "nasalization";
+  src: url("../fonts/nasalization.otf") format("opentype");
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Open+Sans&display=swap");
+
+@import "bootstrap";
+@import "bootstrap-vue";
+
+@import "./alt/adminlte.core.css";
+
+html,
+body,
+#app {
+  font-family: nasalization, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
